@@ -28,15 +28,15 @@
         form.addEventListener('submit', (event) => {
             event.preventDefault();
             if (input.value) {
-                socket.emit('chat message', input.value);
-                input.value = '';
+                socket.emit('chat message', input.value); // Envia el missatge al servidor
+                input.value = ''; // Neteja l'entrada de text
             }
         });
 
         socket.on('chat message', (msg) => {
             const item = document.createElement('li');
             item.textContent = msg;
-            messages.appendChild(item);
+            messages.appendChild(item); // Afegeix el missatge a la llista de missatges
             window.scrollTo(0, document.body.scrollHeight);
         });
     </script>
